@@ -1,2 +1,2 @@
-# scxm-certificate-validator
+# SCXM Certificate Validator
 This is an API which allows to query the certificates defined in a configuration file or via url. 
