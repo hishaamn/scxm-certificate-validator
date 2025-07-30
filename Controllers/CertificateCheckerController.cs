@@ -1,6 +1,7 @@
 ﻿using SCXM.CertificateValidator.Configurations;
 using SCXM.CertificateValidator.Models;
 using Sitecore.Services.Infrastructure.Web.Http;
+using Sitecore.StringExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,16 @@ namespace SCXM.CertificateValidator.Controllers
                         {
                             Sitecore.Diagnostics.Log.Error($"[CERTIFICATEVALIDATOR] :: Error occurred while reading the certificate store. Message: {ex.Message}. StackTrace: {ex.StackTrace}", this);
                         }
+                    }
+                }
+
+                if (!certificateName.IsNullOrEmpty())
+                {
+                    var cert = certs.FirstOrDefault(c => c.Thumbprint.Equals(certificateName, StringComparison.OrdinalIgnoreCase) || c.Subject.Contains(certificateName) || c.FriendlyName.Equals(certificateName, StringComparison.OrdinalIgnoreCase));
+
+                    if(cert != null)
+                    {
+                        return this.Ok(cert);
                     }
                 }
 
