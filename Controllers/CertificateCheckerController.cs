@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
+using Sitecore.Services.Infrastructure.Security;
 
 namespace SCXM.CertificateValidator.Controllers
 {
+    [RequiredApiKey]
     public class CertificateCheckerController : ServicesApiController
     {
         [HttpGet]
