@@ -1,4 +1,4 @@
-
+![Cover](./assets/cover.png)
 # 🔐 Sitecore Certificate Checker API
 
 A Sitecore backoffice API that lists installed SSL certificates and validates their expiration. Useful for monitoring `xConnect`, CMS, or custom SSL certificate lifetimes directly from within Sitecore.
